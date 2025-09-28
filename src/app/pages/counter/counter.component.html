@@ -1,0 +1,145 @@
+<!-- Navbar de Flowbite -->
+<app-navbar></app-navbar>
+
+<!-- Counter Page -->
+<div class="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-extrabold text-gray-900 dark:text-white mb-4">
+        Contador Interactivo
+      </h1>
+      <p class="text-lg text-gray-600 dark:text-gray-300">
+        Una demostración de funcionalidad reactiva en Angular con Tailwind CSS
+      </p>
+    </div>
+
+    <!-- Main Counter Card -->
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-2xl p-8 mb-8">
+      
+      <!-- Counter Display -->
+      <div class="text-center mb-8">
+        <div class="inline-flex items-center justify-center w-32 h-32 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mb-6">
+          <span class="text-4xl font-bold text-white">{{ count }}</span>
+        </div>
+        <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-2">
+          Valor Actual
+        </h2>
+        <p class="text-gray-600 dark:text-gray-300">
+          Incremento: {{ step }}
+        </p>
+      </div>
+
+      <!-- Primary Controls -->
+      <div class="flex flex-wrap justify-center gap-4 mb-8">
+        <button 
+          (click)="decrement()"
+          class="inline-flex items-center px-6 py-3 text-base font-medium text-white bg-red-600 border border-transparent rounded-lg shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors duration-200">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
+          </svg>
+          Decrementar
+        </button>
+        
+        <button 
+          (click)="reset()"
+          class="inline-flex items-center px-6 py-3 text-base font-medium text-gray-700 bg-gray-200 border border-gray-300 rounded-lg shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 dark:bg-gray-600 dark:text-white dark:border-gray-500 dark:hover:bg-gray-700 transition-colors duration-200">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+          </svg>
+          Reset
+        </button>
+        
+        <button 
+          (click)="increment()"
+          class="inline-flex items-center px-6 py-3 text-base font-medium text-white bg-green-600 border border-transparent rounded-lg shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-200">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+          </svg>
+          Incrementar
+        </button>
+      </div>
+
+      <!-- Step Controls -->
+      <div class="border-t border-gray-200 dark:border-gray-700 pt-6 mb-6">
+        <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4 text-center">
+          Controlar Incremento
+        </h3>
+        <div class="flex flex-wrap justify-center gap-2">
+          <button 
+            (click)="setStep(1)"
+            [class]="step === 1 ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700 dark:bg-gray-600 dark:text-white'"
+            class="px-4 py-2 text-sm font-medium rounded-lg border border-gray-300 dark:border-gray-500 hover:bg-blue-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-200">
+            +1
+          </button>
+          <button 
+            (click)="setStep(5)"
+            [class]="step === 5 ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700 dark:bg-gray-600 dark:text-white'"
+            class="px-4 py-2 text-sm font-medium rounded-lg border border-gray-300 dark:border-gray-500 hover:bg-blue-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-200">
+            +5
+          </button>
+          <button 
+            (click)="setStep(10)"
+            [class]="step === 10 ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700 dark:bg-gray-600 dark:text-white'"
+            class="px-4 py-2 text-sm font-medium rounded-lg border border-gray-300 dark:border-gray-500 hover:bg-blue-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-200">
+            +10
+          </button>
+          <button 
+            (click)="setStep(100)"
+            [class]="step === 100 ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700 dark:bg-gray-600 dark:text-white'"
+            class="px-4 py-2 text-sm font-medium rounded-lg border border-gray-300 dark:border-gray-500 hover:bg-blue-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-200">
+            +100
+          </button>
+        </div>
+      </div>
+
+      <!-- Advanced Operations -->
+      <div class="border-t border-gray-200 dark:border-gray-700 pt-6">
+        <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4 text-center">
+          Operaciones Avanzadas
+        </h3>
+        <div class="flex flex-wrap justify-center gap-4">
+          <button 
+            (click)="multiplyByTwo()"
+            class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-purple-600 border border-transparent rounded-lg shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors duration-200">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+            × 2
+          </button>
+          
+          <button 
+            (click)="divideByTwo()"
+            class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-orange-600 border border-transparent rounded-lg shadow-sm hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-colors duration-200">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
+            </svg>
+            ÷ 2
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Statistics Card -->
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+      <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">
+        Información del Contador
+      </h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="text-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+          <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">{{ count }}</div>
+          <div class="text-sm text-gray-600 dark:text-gray-300">Valor Actual</div>
+        </div>
+        <div class="text-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+          <div class="text-2xl font-bold text-green-600 dark:text-green-400">{{ step }}</div>
+          <div class="text-sm text-gray-600 dark:text-gray-300">Incremento</div>
+        </div>
+        <div class="text-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+          <div class="text-2xl font-bold text-purple-600 dark:text-purple-400">{{ count >= 0 ? '+' : '-' }}</div>
+          <div class="text-sm text-gray-600 dark:text-gray-300">Signo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
