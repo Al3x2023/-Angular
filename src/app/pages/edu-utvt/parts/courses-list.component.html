@@ -1,0 +1,22 @@
+<div class="space-y-2">
+  @if (courses().length === 0) {
+    <p class="text-gray-100">No hay cursos registrados.</p>
+  } @else {
+    <ul class="space-y-2">
+      @for (course of courses(); track course.id) {
+        <li class="course-card flex items-start justify-between">
+          <div>
+            <div class="font-semibold">{{ course.name }}</div>
+            <div class="text-sm text-gray-100">Duración: {{ course.duration }} horas</div>
+            <div class="text-sm text-gray-100">Nivel: <span class="badge">{{ course.level }}</span></div>
+            <div class="text-sm text-gray-100">Cuatrimestre: {{ course.cuatrimestre }}</div>
+          </div>
+          <div class="flex gap-2">
+            <button class="text-indigo-700" (click)="onSelect(course)">Editar</button>
+            <button class="text-red-600" (click)="onRemove(course)">Eliminar</button>
+          </div>
+        </li>
+      }
+    </ul>
+  }
+</div>

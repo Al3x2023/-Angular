@@ -1,0 +1,2 @@
+.course-card { @apply bg-white shadow rounded p-3; }
+.badge { @apply px-2 py-1 text-xs rounded bg-indigo-100 text-indigo-700; }

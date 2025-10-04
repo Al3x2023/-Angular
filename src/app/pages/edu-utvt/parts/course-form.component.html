@@ -1,0 +1,34 @@
+<div class="course-card">
+  @if (course() === null) {
+    <h3 class="text-lg font-semibold mb-2">Crear Curso</h3>
+  } @else {
+    <h3 class="text-lg font-semibold mb-2">Editar Curso</h3>
+  }
+
+  <form (ngSubmit)="onSubmit()" #f="ngForm" class="space-y-3">
+    <div>
+      <label class="block text-sm">Nombre</label>
+      <input class="border rounded w-full p-2" [ngModel]="name()" (ngModelChange)="name.set($event)" name="name" required />
+    </div>
+    <div>
+      <label class="block text-sm">Duración (horas)</label>
+      <input type="number" class="border rounded w-full p-2" [ngModel]="duration()" (ngModelChange)="duration.set($event)" name="duration" required min="1" />
+    </div>
+    <div>
+      <label class="block text-sm">Nivel</label>
+      <select class="border rounded w-full p-2" [ngModel]="level()" (ngModelChange)="level.set($event)" name="level">
+        <option value="Basico">Básico</option>
+        <option value="Intermedio">Intermedio</option>
+        <option value="Avanzado">Avanzado</option>
+      </select>
+    </div>
+    <div>
+      <label class="block text-sm">Cuatrimestre</label>
+      <input type="number" class="border rounded w-full p-2" [ngModel]="cuatrimestre()" (ngModelChange)="cuatrimestre.set($event)" name="cuatrimestre" required min="1" />
+    </div>
+    <div class="flex gap-2 pt-2">
+      <button type="submit" class="bg-indigo-600 text-white px-3 py-2 rounded">Guardar</button>
+      <button type="button" class="bg-gray-100 text-gray-800 px-3 py-2 rounded" (click)="onCancel()">Cancelar</button>
+    </div>
+  </form>
+</div>
