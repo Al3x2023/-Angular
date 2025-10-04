@@ -16,7 +16,7 @@ export class CourseFormComponent {
   cancel = output<void>();
 
   name = signal('');
-  duration = signal<number>(0);
+  duration = signal<number>(1);
   level = signal<Level>('Basico');
   cuatrimestre = signal<number>(1);
 
@@ -30,13 +30,17 @@ export class CourseFormComponent {
       this.cuatrimestre.set(c.cuatrimestre);
     } else {
       this.name.set('');
-      this.duration.set(0);
+      this.duration.set(1);
       this.level.set('Basico');
       this.cuatrimestre.set(1);
     }
   });
 
   onSubmit() {
+    // Validación: duración mínima 1 hora y nombre requerido
+    if (!this.name() || this.duration() < 1) {
+      return;
+    }
     const payload: Omit<Course, 'id'> & Partial<Pick<Course, 'id'>> = {
       id: this.course()?.id,
       name: this.name(),

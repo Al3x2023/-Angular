@@ -12,7 +12,10 @@
     </div>
     <div>
       <label class="block text-sm">Duración (horas)</label>
-      <input type="number" class="border rounded w-full p-2" [ngModel]="duration()" (ngModelChange)="duration.set($event)" name="duration" required min="1" />
+      <input type="number" class="border rounded w-full p-2" [ngModel]="duration()" (ngModelChange)="duration.set($event)" name="duration" required min="1" step="1" />
+      @if (duration() < 1) {
+        <p class="text-red-600 text-sm mt-1">La duración debe ser al menos 1 hora.</p>
+      }
     </div>
     <div>
       <label class="block text-sm">Nivel</label>
@@ -27,7 +30,7 @@
       <input type="number" class="border rounded w-full p-2" [ngModel]="cuatrimestre()" (ngModelChange)="cuatrimestre.set($event)" name="cuatrimestre" required min="1" />
     </div>
     <div class="flex gap-2 pt-2">
-      <button type="submit" class="bg-indigo-600 text-white px-3 py-2 rounded">Guardar</button>
+      <button type="submit" class="bg-indigo-600 text-white px-3 py-2 rounded disabled:opacity-50" [disabled]="f.invalid || duration() < 1">Guardar</button>
       <button type="button" class="bg-gray-100 text-gray-800 px-3 py-2 rounded" (click)="onCancel()">Cancelar</button>
     </div>
   </form>
